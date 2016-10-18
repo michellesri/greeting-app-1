@@ -1,6 +1,8 @@
 
 const assert = require('assert');
 const greet = require('./greet');
+const exec = require('child_process').execSync;
+let inputReturn = exec('node index.js michelle');
 
 describe('greeter:', () => {
   it('greets with name', () => {
@@ -18,5 +20,10 @@ describe('greeter:', () => {
 describe('arguments:', () => {
   it('arguments are being processsed correctly', () => {
     assert.equal('blah', process.argv[3]);
+  });
+  it('input passes', () => {
+    let greeting = greet('michelle');
+    inputReturn = inputReturn.toString().split('\n');
+    assert.equal(greeting, inputReturn[0]);
   });
 });

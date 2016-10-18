@@ -1,3 +1,5 @@
 const greet = require('./greet');
 
-console.log(greet(process.argv[2]));
+let response = greet(process.argv[2]);
+
+console.log(response);
